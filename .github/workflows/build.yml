@@ -1,5 +1,8 @@
 name: CI
-on: [pull_request]
+on: 
+  push:
+    branches:
+      - master
 jobs:
   build:
     name: Make build
@@ -12,3 +15,14 @@ jobs:
         registry-url: 'https://registry.npmjs.org'
     - run: yarn install
     - run: yarn build
+    - name: Add and Commit changes to pr-pages branch
+      run: |
+        git config --local user.email 'action@github.com'
+        git config --local user.name 'GitHub Action'
+        git add dist/*
+        git commit -m 'Add build'
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: master

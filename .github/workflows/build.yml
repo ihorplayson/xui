@@ -1,8 +1,8 @@
-name: CI
+name: Build
 on: 
   push:
     branches:
-      - feature-workflow-test
+      - master
 jobs:
   build:
     name: Make build

@@ -36,10 +36,7 @@ const store = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById('app');
 
 const render = messages => {
-  ReactDOM.render(
-        <App />,
-    MOUNT_NODE,
-  );
+  ReactDOM.render(<App />, MOUNT_NODE);
 };
 
 if (module.hot) {
@@ -73,4 +70,4 @@ if (process.env.NODE_ENV === 'production') {
   require('offline-plugin/runtime').install(); // eslint-disable-line global-require
 }
 
-//test comment
+// test comment 2
